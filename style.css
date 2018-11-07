@@ -1,0 +1,50 @@
+body {
+  width: 100%;
+  padding: 50px;
+  border: Tomato solid 20px;
+  box-sizing: border-box
+}
+.header{
+  text-align: center;
+}
+.header h1 {
+  color: Tomato
+}
+.form-field {
+  margin: auto;
+  text-align: center
+}
+#addToList {
+  cursor: pointer;
+  background: Tomato;
+  border: none;
+  padding: 5px 20px;
+  margin: 5px;
+  border-radius: 30%
+}
+.list-container {
+  margin-left: -40px;
+  text-align: center;
+  cursor: pointer;
+}
+li {
+  list-style: none;
+}
+li:nth-child(even) {
+  background: Tomato;
+  }
+li:nth-child(odd) {
+  background: Cyan;
+}
+.done {
+  text-decoration: line-through;
+  background: purple
+}
+.delButton {
+  cursor: pointer;
+  background: slateGray;
+  border: none;
+  padding: 5px 20px;
+  margin: 5px;
+  border-radius: 30%
+}
