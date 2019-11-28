@@ -1,0 +1,53 @@
+* {
+	/* border: red 0.1px solid; */
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+	color: white;
+	font-family: Roboto;
+}
+
+body {
+	background-image: url("./circle-blues.png");
+}
+
+#app {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+.app__header {
+	grid-column: span 2;
+	justify-self: center;
+}
+.forms__container {
+	grid-column: span 2;
+	justify-self: center;
+}
+.form {
+	grid-column: span 2;
+	justify-self: center;
+}
+
+.form__input {
+	color: black;
+}
+
+.form__submit {
+	color: black;
+}
+.form__submit--save {
+	width: 100%;
+	margin-top: 1em;
+}
+
+.list {
+	justify-self: center;
+	padding-left: 0;
+	/* list-style-type: none; */
+}
+
+.list__item {
+}
+
+.list__item--completed {
+	text-decoration-line: line-through;
+}

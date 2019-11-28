@@ -1,2 +1,3 @@
-# Item-list
-Practicing my newly acquired list creating skills
+# Yet another To do list
+
+Because there's only so many ways of saying hello world
