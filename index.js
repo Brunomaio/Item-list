@@ -1,8 +1,9 @@
 let todoList = document.getElementById("todolist");
 let completedList = document.getElementById("completedlist");
 let formSubmit = document.getElementById("form-submit");
-let inputField = document.querySelector(".form__input");
-let saveList = document.getElementById("save-list-checkbox");
+let inputField = document.getElementById("form-input");
+let saveList = document.getElementById("save-list");
+let clearListBtn = document.getElementById("clear-list-btn");
 
 let items = [];
 
@@ -27,9 +28,9 @@ formSubmit.addEventListener("click", e => {
 	e.preventDefault();
 	if (userInput.length > 0) {
 		items.push({ description: userInput, completed: false, id: items.length });
-		clearList();
 		renderList();
 		updateLocalStorage();
+		clearList();
 		inputField.value = "";
 		userInput = "";
 	}
@@ -55,17 +56,24 @@ document.addEventListener("click", e => {
 				item.completed = !item.completed;
 			}
 		});
-		clearList();
 		renderList();
-		saveToLocalStorage();
+		updateLocalStorage();
+		clearList();
 	}
 });
 
+clearListBtn.addEventListener("click", () => {
+	clearLocalStorage();
+	clearList();
+	renderList();
+});
+
 function clearList() {
-	const allItems = document.querySelectorAll(".list__item");
-	allItems.forEach(item => {
-		item.parentNode.removeChild(item);
-	});
+	// const allItems = document.querySelectorAll(".list__item");
+	// allItems.forEach(item => {
+	// 	item.parentNode.removeChild(item);
+	// });
+	items = [];
 }
 
 function renderList() {
@@ -87,6 +95,9 @@ function renderList() {
 function updateLocalStorage() {
 	if (saveList.checked) {
 		localStorage.setItem("todoList", JSON.stringify(items));
-		console.log(JSON.parse(localStorage.todoList));
 	}
+}
+
+function clearLocalStorage() {
+	localStorage.clear();
 }
