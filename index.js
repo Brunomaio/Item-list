@@ -1,9 +1,10 @@
-let todoList = document.getElementById("todolist");
-let completedList = document.getElementById("completedlist");
-let formSubmit = document.getElementById("form-submit");
-let inputField = document.getElementById("form-input");
-let saveList = document.getElementById("save-list");
-let clearListBtn = document.getElementById("clear-list-btn");
+const todoList = document.getElementById("todolist");
+const completedList = document.getElementById("completedlist");
+const formSubmit = document.getElementById("form-submit");
+const inputField = document.getElementById("form-input");
+const saveList = document.getElementById("save-list");
+const clearListBtn = document.getElementById("clear-list-btn");
+const deleteItemBtn = document.getElementById("delete-item-btn");
 
 let items = [];
 
@@ -13,7 +14,7 @@ inputField.addEventListener("keyup", e => {
 	userInput = e.target.value;
 });
 
-// Add the state of the "Save list" checkbox to localStorage
+// Add the state of the "Save list" checkbox to localStorage and updates it with items list array
 saveList.addEventListener("click", () => {
 	if (saveList.checked) {
 		localStorage.setItem("saveList", saveList.checked);
@@ -51,6 +52,7 @@ window.addEventListener("load", () => {
 });
 
 // Toggles "completed" css class to item upon click and update "items" array
+/**** HAS BUG with entries with same description. Use item ID instead ***/
 document.addEventListener("click", e => {
 	if (e.target.nodeName === "LI") {
 		e.target.classList.toggle("list__item--completed");
@@ -64,6 +66,8 @@ document.addEventListener("click", e => {
 		addItemsToLocalStorage();
 	}
 });
+
+deleteItemBtn.addEventListener("click", e => deleteItem(e));
 
 clearListBtn.addEventListener("click", () => {
 	clearLocalStorage();
@@ -94,13 +98,27 @@ function clearList() {
 
 function renderList() {
 	items.forEach(item => {
+		if (item.active) {
+		}
 		let listItem = document.createElement("li");
 		listItem.classList.add("list__item");
 		listItem.setAttribute("data-items", item.id);
+
+		let listItemText = document.createElement("p");
+		listItemText.classList.add("list__item-text");
+		listItemText.textContent = item.description;
+
+		let listItemDelete = document.createElement("button");
+		listItemDelete.classList.add("list__item-delete");
+		listItemDelete.id.add("delete-item-btn");
+
+		listItem.appendChild(listItemText);
+		listItem.appendChild(listItemDelete);
+
 		if (item.completed) {
 			listItem.classList.add("list__item--completed");
 		}
-		listItem.textContent = item.description;
+
 		if (!item.completed) {
 			todoList.appendChild(listItem);
 		} else {
@@ -119,4 +137,13 @@ function clearLocalStorage() {
 	} else {
 		localStorage.clear();
 	}
+}
+
+function deleteItem(listItem) {
+	items.forEach(item => {
+		if (listItem.target.parentElement.id === item.id) {
+			item.active = false;
+		}
+	});
+	console.log(listItem);
 }

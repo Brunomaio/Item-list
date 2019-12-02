@@ -1,13 +1,19 @@
-* {
-	/* border: red 0.1px solid; */
-	box-sizing: border-box;
-	font-family: "Montserrat", sans-serif;
-	color: white;
-	font-family: Roboto;
+:root {
+	--background: #16161a;
+	--primary: #7f5af0;
+	--secondary: #72757e;
+	--tertiary: #2cb67d;
 }
 
 body {
-	background-image: url("./background.png");
+	background-color: var(--background);
+}
+
+* {
+	/* border: red 0.1px solid; */
+	box-sizing: border-box;
+	font-family: Roboto;
+	color: white;
 }
 
 .checkbox {
@@ -37,7 +43,7 @@ body {
 	transition: all 0.2s ease-in-out;
 }
 .checkbox__switch:checked {
-	background: #0ebeff;
+	background: var(--tertiary);
 }
 .checkbox__switch:after {
 	position: absolute;
@@ -61,8 +67,11 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 }
-
-.app__header {
+.header {
+	grid-column: span 2;
+	justify-self: center;
+}
+.header__title {
 	grid-column: span 2;
 	justify-self: center;
 }
@@ -76,16 +85,15 @@ body {
 	grid-column: span 2;
 	justify-self: center;
 }
-
-.form--black {
+.form__input-field {
 	color: black;
 }
-
 .form__button {
 	min-width: 3rem;
 	min-height: 1rem;
 	border-radius: 20px;
 	border: none;
+	background-color: var(--primary);
 }
 
 .form__button--extended-width {
@@ -103,8 +111,26 @@ body {
 }
 
 .list__item {
+	display: flex;
+	min-width: 25rem;
 }
-
+.list__item-text {
+	min-width: 15em;
+	max-width: 15em;
+	margin-right: 2em;
+}
+.list__item-delete {
+	align-self: center;
+	background-color: var(--background);
+	border: none;
+	border-radius: 50%;
+	transition: all 0.2s ease-in-out;
+}
+.list__item-delete:hover {
+	/* width: 1em; */
+	background-color: var(--primary);
+	border-radius: 50%;
+}
 .list__item--completed {
 	text-decoration-line: line-through;
 }

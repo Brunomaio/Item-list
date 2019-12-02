@@ -12,33 +12,49 @@
 	</head>
 	<body>
 		<div class="checkbox">
-			<div class="checkbox__text">Keep List saved?</div>
+			<div class="checkbox__text">Keep list saved?</div>
 			<div class="checkbox__switch-container">
 				<input type="checkbox" id="save-list" class="checkbox__switch" />
 			</div>
 		</div>
 		<div id="app">
-			<h1 class="app__header">
-				TODO list... yay
-			</h1>
-			<div class="form-container">
-				<form class="form-input">
-					<input class="form--black" id="form-input" type="text" />
-					<button class="form__button form--black" id="form-submit">
-						Add item
+			<header class="header">
+				<h1 class="header__title">
+					TODO list... yay
+				</h1>
+				<div class="form-container">
+					<form class="form-input">
+						<input class="form__input-field" id="form-input" type="text" />
+						<button class="form__button" id="form-submit">
+							Add item
+						</button>
+					</form>
+					<button
+						type="text"
+						id="clear-list-btn"
+						class="form__button form__button--extended-width form__button--center"
+					>
+						Delete lists
 					</button>
-				</form>
-				<button
-					type="text"
-					id="clear-list-btn"
-					class="form__button form--black form__button--extended-width"
-				>
-					Delete lists
-				</button>
-			</div>
+				</div>
+			</header>
 			<ul class="list list__todo" id="todolist">
 				<h2 class="list__header">TO DO</h2>
-				<!-- <li class="list__item">I'm a list item!</li> -->
+				<li class="list__item">
+					<p class="list__item-text">Lorem ipsum dolor sit amet.</p>
+					<button class="list__item-delete" id="delete-item-btn">
+						<span>X</span>
+					</button>
+				</li>
+				<li class="list__item">
+					<p class="list__item-text">
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui,
+						natus.
+					</p>
+					<button class="list__item-delete" id="delete-item-btn">
+						X
+					</button>
+				</li>
 				<!-- list items rendered by JS -->
 			</ul>
 			<ul class="list list_completed" id="completedlist">
