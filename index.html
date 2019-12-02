@@ -10,8 +10,13 @@
 		/>
 		<link rel="stylesheet" href="./styles.css" type="text/css" />
 	</head>
-
 	<body>
+		<div class="checkbox">
+			<div class="checkbox__text">Keep List saved?</div>
+			<div class="checkbox__switch-container">
+				<input type="checkbox" id="save-list" class="checkbox__switch" />
+			</div>
+		</div>
 		<div id="app">
 			<h1 class="app__header">
 				TODO list... yay
@@ -23,18 +28,12 @@
 						Add item
 					</button>
 				</form>
-				<div class="checkbox">
-					<div class="checkbox__text">Keep List saved?</div>
-					<div class="checkbox__switch-container">
-						<input type="checkbox" id="save-list" class="checkbox__switch" />
-					</div>
-				</div>
 				<button
 					type="text"
 					id="clear-list-btn"
 					class="form__button form--black form__button--extended-width"
 				>
-					Delete list
+					Delete lists
 				</button>
 			</div>
 			<ul class="list list__todo" id="todolist">

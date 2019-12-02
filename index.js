@@ -17,7 +17,7 @@ inputField.addEventListener("keyup", e => {
 saveList.addEventListener("click", () => {
 	if (saveList.checked) {
 		localStorage.setItem("saveList", saveList.checked);
-		updateLocalStorage();
+		addItemsToLocalStorage();
 	} else {
 		localStorage.removeItem("saveList");
 	}
@@ -27,10 +27,12 @@ saveList.addEventListener("click", () => {
 formSubmit.addEventListener("click", e => {
 	e.preventDefault();
 	if (userInput.length > 0) {
-		items.push({ description: userInput, completed: false, id: items.length });
+		addItemToList();
+		clearUI();
 		renderList();
-		updateLocalStorage();
-		clearList();
+		if (saveList.checked) {
+			addItemsToLocalStorage();
+		}
 		inputField.value = "";
 		userInput = "";
 	}
@@ -43,6 +45,7 @@ window.addEventListener("load", () => {
 	}
 	if (localStorage.todoList) {
 		items = JSON.parse(localStorage.todoList);
+		clearUI();
 		renderList();
 	}
 });
@@ -56,23 +59,36 @@ document.addEventListener("click", e => {
 				item.completed = !item.completed;
 			}
 		});
+		clearUI();
 		renderList();
-		updateLocalStorage();
-		clearList();
+		addItemsToLocalStorage();
 	}
 });
 
 clearListBtn.addEventListener("click", () => {
 	clearLocalStorage();
+	clearUI();
 	clearList();
 	renderList();
 });
 
+function addItemToList() {
+	items.push({
+		description: userInput,
+		completed: false,
+		id: items.length,
+		active: true
+	});
+}
+
+function clearUI() {
+	const allItems = document.querySelectorAll(".list__item");
+	allItems.forEach(item => {
+		item.parentNode.removeChild(item);
+	});
+}
+
 function clearList() {
-	// const allItems = document.querySelectorAll(".list__item");
-	// allItems.forEach(item => {
-	// 	item.parentNode.removeChild(item);
-	// });
 	items = [];
 }
 
@@ -80,6 +96,7 @@ function renderList() {
 	items.forEach(item => {
 		let listItem = document.createElement("li");
 		listItem.classList.add("list__item");
+		listItem.setAttribute("data-items", item.id);
 		if (item.completed) {
 			listItem.classList.add("list__item--completed");
 		}
@@ -92,12 +109,14 @@ function renderList() {
 	});
 }
 
-function updateLocalStorage() {
-	if (saveList.checked) {
-		localStorage.setItem("todoList", JSON.stringify(items));
-	}
+function addItemsToLocalStorage() {
+	localStorage.setItem("todoList", JSON.stringify(items));
 }
 
 function clearLocalStorage() {
-	localStorage.clear();
+	if (saveList.checked) {
+		localStorage.removeItem("todoList");
+	} else {
+		localStorage.clear();
+	}
 }
