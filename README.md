@@ -14,9 +14,12 @@ Features:
 
 \*\* The items aren't really deleted, but instead set as inactive and thus won't render. I opted to do this because I hoard data... force of habit.
 
+Roadmap:
+
+- Move items around by drag & dropping
+
 ---
 
 Known bugs:
 
-- Event listener to set item as completed don't work
-- If 2 list items have the same name, clicking on one affects the other
+- Event listener to set item as completed also set the delete icon as completed

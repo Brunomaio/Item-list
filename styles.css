@@ -12,8 +12,8 @@
 	display: flex;
 	justify-content: center;
 	position: absolute;
-	top: 3rem;
-	right: 2rem;
+	top: 1rem;
+	right: 1rem;
 }
 .checkbox__text {
 	padding-top: 0.3rem;
@@ -109,18 +109,23 @@
 }
 
 .list {
-	justify-self: center;
 	padding-left: 0;
 }
 
+.list__header {
+	text-align: center;
+}
 .list__item {
 	display: flex;
+	margin-left: 3rem;
 }
+
 .list__item-text {
 	min-width: 10em;
 	max-width: max-content;
 	margin-right: 2em;
 	cursor: pointer;
+	user-select: none;
 }
 .list__item-delete {
 	align-self: center;
@@ -136,4 +141,11 @@
 }
 .list__item--completed {
 	text-decoration-line: line-through;
+}
+
+@media only screen and (max-width: 800px) {
+	.list {
+		margin-top: 2rem;
+		grid-column: span 2;
+	}
 }

@@ -52,13 +52,11 @@ window.addEventListener("load", () => {
 });
 
 // Toggles "completed" css class to item upon click and update "items" array
-/**** HAS BUG with entries with same description. Use item ID instead ***/
 window.addEventListener("click", e => {
 	if (e.target.parentElement.nodeName === "LI") {
-		console.log(e);
-		e.target.e.target.classList.toggle("list__item--completed");
+		e.target.classList.toggle("list__item--completed");
 		items.forEach(item => {
-			if (e.target.textContent === item.description) {
+			if (e.target.parentElement.attributes[1].value == item.id) {
 				item.completed = !item.completed;
 			}
 		});
@@ -152,7 +150,6 @@ function clearLocalStorage() {
 }
 
 function deleteItem(listItem) {
-	console.log(listItem.target.parentElement.attributes[1].value);
 	items.forEach(item => {
 		if (listItem.target.parentElement.attributes[1].value == item.id) {
 			item.active = false;
