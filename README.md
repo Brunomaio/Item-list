@@ -2,13 +2,21 @@
 
 Because there's only so many ways of saying hello world
 
-- To do:
+---
 
-* Feature do delete individual items
-* Feature to drag and drop items within list
-* Improve the styling
+Features:
 
-- Known bugs:
+- Add items to your list (wow)
+- Click on said items to move them between the "To do" and "Done" lists beautifully crafted styles differentiating each list
+- Delete individual items (kind of\*\*)
+- Delete the entire list (also kind of\*\*)
+- Save your lists in your browsers' local storage for future use (deleting the list clears this too)
 
-* If 2 list items have the same name, clicking on one affects the other. Possible fix: when creating <li> list item, also add an ID attribute equals to the item.id in the items array and check for that instead of name
-* When it becomes possible to delete individual items, adding new items may cause multiple items to have the same item.id because I set the id to items.length
+\*\* The items aren't really deleted, but instead set as inactive and thus won't render. I opted to do this because I hoard data... force of habit.
+
+---
+
+Known bugs:
+
+- Event listener to set item as completed don't work
+- If 2 list items have the same name, clicking on one affects the other

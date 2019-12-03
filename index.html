@@ -6,7 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link
 			rel="stylesheet"
-			href="https://fonts.googleapis.com/css?family=Montserrat:400i&display=swap"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+			integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU="
+			crossorigin="anonymous"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="./styles.css" type="text/css" />
 	</head>
@@ -23,42 +29,29 @@
 					TODO list... yay
 				</h1>
 				<div class="form-container">
-					<form class="form-input">
+					<form class="form__input">
 						<input class="form__input-field" id="form-input" type="text" />
 						<button class="form__button" id="form-submit">
 							Add item
 						</button>
 					</form>
-					<button
-						type="text"
-						id="clear-list-btn"
-						class="form__button form__button--extended-width form__button--center"
-					>
-						Delete lists
-					</button>
+					<form class="form__delete">
+						<button
+							type="text"
+							id="clear-list-btn"
+							class="form__button form__button--extended-width form__button--center"
+						>
+							Delete lists
+						</button>
+					</form>
 				</div>
 			</header>
 			<ul class="list list__todo" id="todolist">
 				<h2 class="list__header">TO DO</h2>
-				<li class="list__item">
-					<p class="list__item-text">Lorem ipsum dolor sit amet.</p>
-					<button class="list__item-delete" id="delete-item-btn">
-						<span>X</span>
-					</button>
-				</li>
-				<li class="list__item">
-					<p class="list__item-text">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui,
-						natus.
-					</p>
-					<button class="list__item-delete" id="delete-item-btn">
-						X
-					</button>
-				</li>
 				<!-- list items rendered by JS -->
 			</ul>
 			<ul class="list list_completed" id="completedlist">
-				<h2 class="list__header">DONE!</h2>
+				<h2 class="list__header">DONE</h2>
 				<!-- <li class="list__item list__item--completed">
 					I'm a completed list item!
 				</li> -->

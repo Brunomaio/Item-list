@@ -1,25 +1,18 @@
 :root {
-	--background: #16161a;
-	--primary: #7f5af0;
-	--secondary: #72757e;
-	--tertiary: #2cb67d;
-}
-
-body {
-	background-color: var(--background);
+	--primary: #2cb67d;
 }
 
 * {
 	/* border: red 0.1px solid; */
 	box-sizing: border-box;
-	font-family: Roboto;
-	color: white;
+	font-family: "Lato", sans-serif;
 }
 
 .checkbox {
 	display: flex;
 	justify-content: center;
 	position: absolute;
+	top: 3rem;
 	right: 2rem;
 }
 .checkbox__text {
@@ -39,11 +32,10 @@ body {
 	position: relative;
 	cursor: pointer;
 	outline: none;
-	/* -webkit-transition: all 0.2s ease-in-out; */
 	transition: all 0.2s ease-in-out;
 }
 .checkbox__switch:checked {
-	background: var(--tertiary);
+	background: var(--primary);
 }
 .checkbox__switch:after {
 	position: absolute;
@@ -67,6 +59,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 }
+
 .header {
 	grid-column: span 2;
 	justify-self: center;
@@ -79,30 +72,40 @@ body {
 .form-container {
 	grid-column: span 2;
 	justify-self: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
 
 .form {
 	grid-column: span 2;
 	justify-self: center;
 }
-.form__input-field {
-	color: black;
+.form__input {
+	grid-column: span 2;
 }
 .form__button {
-	min-width: 3rem;
-	min-height: 1rem;
+	color: white;
+	outline: none;
+	padding: 0.2rem 1rem;
 	border-radius: 20px;
 	border: none;
+	cursor: pointer;
+	box-shadow: 0 3px #999;
 	background-color: var(--primary);
 }
-
-.form__button--extended-width {
-	margin-top: 1rem;
-	width: 50%;
+.form__button:active {
+	background-color: #2aaa75;
+	box-shadow: 0 1.3px #999;
+	transform: translateY(1px);
 }
-.form__button--center {
+
+.form__delete {
 	grid-column: span 2;
-	justify-content: center;
+	text-align: center;
+}
+.form__button--extended-width {
+	margin-top: 0.6rem;
+	width: 50%;
 }
 
 .list {
@@ -112,24 +115,24 @@ body {
 
 .list__item {
 	display: flex;
-	min-width: 25rem;
 }
 .list__item-text {
-	min-width: 15em;
-	max-width: 15em;
+	min-width: 10em;
+	max-width: max-content;
 	margin-right: 2em;
+	cursor: pointer;
 }
 .list__item-delete {
 	align-self: center;
-	background-color: var(--background);
 	border: none;
 	border-radius: 50%;
 	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	background-color: white;
 }
 .list__item-delete:hover {
-	/* width: 1em; */
-	background-color: var(--primary);
 	border-radius: 50%;
+	background-color: tomato;
 }
 .list__item--completed {
 	text-decoration-line: line-through;

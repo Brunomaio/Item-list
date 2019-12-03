@@ -53,9 +53,10 @@ window.addEventListener("load", () => {
 
 // Toggles "completed" css class to item upon click and update "items" array
 /**** HAS BUG with entries with same description. Use item ID instead ***/
-document.addEventListener("click", e => {
-	if (e.target.nodeName === "LI") {
-		e.target.classList.toggle("list__item--completed");
+window.addEventListener("click", e => {
+	if (e.target.parentElement.nodeName === "LI") {
+		console.log(e);
+		e.target.e.target.classList.toggle("list__item--completed");
 		items.forEach(item => {
 			if (e.target.textContent === item.description) {
 				item.completed = !item.completed;
@@ -67,9 +68,19 @@ document.addEventListener("click", e => {
 	}
 });
 
-deleteItemBtn.addEventListener("click", e => deleteItem(e));
+// "Deletes" the item upon clicking on the X button (actually only sets the item.active as false)
+window.addEventListener("click", e => {
+	if (e.target.id === "delete-item-btn") {
+		deleteItem(e);
+		addItemsToLocalStorage();
+		clearUI();
+		renderList();
+	}
+});
 
-clearListBtn.addEventListener("click", () => {
+// Sets all items as active = false so that they won't display
+clearListBtn.addEventListener("click", e => {
+	e.preventDefault();
 	clearLocalStorage();
 	clearUI();
 	clearList();
@@ -99,30 +110,31 @@ function clearList() {
 function renderList() {
 	items.forEach(item => {
 		if (item.active) {
-		}
-		let listItem = document.createElement("li");
-		listItem.classList.add("list__item");
-		listItem.setAttribute("data-items", item.id);
+			let listItem = document.createElement("li");
+			listItem.classList.add("list__item");
+			listItem.setAttribute("data-items", item.id);
 
-		let listItemText = document.createElement("p");
-		listItemText.classList.add("list__item-text");
-		listItemText.textContent = item.description;
+			let listItemText = document.createElement("p");
+			listItemText.classList.add("list__item-text");
+			listItemText.textContent = item.description;
 
-		let listItemDelete = document.createElement("button");
-		listItemDelete.classList.add("list__item-delete");
-		listItemDelete.id.add("delete-item-btn");
+			let listItemDelete = document.createElement("button");
+			listItemDelete.classList.add("list__item-delete");
+			listItemDelete.id = "delete-item-btn";
+			listItemDelete.textContent = "X";
 
-		listItem.appendChild(listItemText);
-		listItem.appendChild(listItemDelete);
+			listItem.appendChild(listItemText);
+			listItem.appendChild(listItemDelete);
 
-		if (item.completed) {
-			listItem.classList.add("list__item--completed");
-		}
+			if (item.completed) {
+				listItem.classList.add("list__item--completed");
+			}
 
-		if (!item.completed) {
-			todoList.appendChild(listItem);
-		} else {
-			completedList.appendChild(listItem);
+			if (!item.completed) {
+				todoList.appendChild(listItem);
+			} else {
+				completedList.appendChild(listItem);
+			}
 		}
 	});
 }
@@ -140,10 +152,10 @@ function clearLocalStorage() {
 }
 
 function deleteItem(listItem) {
+	console.log(listItem.target.parentElement.attributes[1].value);
 	items.forEach(item => {
-		if (listItem.target.parentElement.id === item.id) {
+		if (listItem.target.parentElement.attributes[1].value == item.id) {
 			item.active = false;
 		}
 	});
-	console.log(listItem);
 }
