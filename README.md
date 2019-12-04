@@ -11,15 +11,6 @@ Features:
 - Delete individual items (kind of\*\*)
 - Delete the entire list (also kind of\*\*)
 - Save your lists in your browsers' local storage for future use (deleting the list clears this too)
+- There's an easter egg. Add Onions to the the list
 
 \*\* The items aren't really deleted, but instead set as inactive and thus won't render. I opted to do this because I hoard data... force of habit.
-
-Roadmap:
-
-- Move items around by drag & dropping
-
----
-
-Known bugs:
-
-- Event listener to set item as completed also set the delete icon as completed

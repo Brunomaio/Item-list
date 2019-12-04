@@ -1,5 +1,6 @@
 :root {
 	--primary: #2cb67d;
+	--secondary: #93e5ab;
 }
 
 * {
@@ -9,11 +10,13 @@
 }
 
 .checkbox {
+	position: sticky;
 	display: flex;
-	justify-content: center;
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	justify-content: flex-end;
+	top: 0;
+	padding: 1rem;
+	background-color: white;
+	transition: all 0.2s ease-in-out;
 }
 .checkbox__text {
 	padding-top: 0.3rem;
@@ -53,16 +56,22 @@
 .checkbox__switch:checked:after {
 	left: calc(100% - 0.9em);
 }
+.checkbox--scrolled {
+	opacity: 0.4;
+}
 
 #app {
-	padding-top: 5rem;
+	/* padding-top: 1rem; */
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 }
 
 .header {
 	grid-column: span 2;
-	justify-self: center;
+	text-align: center;
+	padding-bottom: 2rem;
+	border-bottom: var(--primary) 1px solid;
+	/* box-shadow: 0px 18px 16px -10px rgba(0, 0, 0, 0.75); */
 }
 .header__title {
 	grid-column: span 2;
@@ -83,6 +92,13 @@
 .form__input {
 	grid-column: span 2;
 }
+.form__input-field {
+	border: none;
+	border-bottom: #ddd solid 1px;
+	margin-right: 1rem;
+	outline: none;
+}
+
 .form__button {
 	color: white;
 	outline: none;
@@ -92,6 +108,7 @@
 	cursor: pointer;
 	box-shadow: 0 3px #999;
 	background-color: var(--primary);
+	user-select: none;
 }
 .form__button:active {
 	background-color: #2aaa75;
@@ -101,28 +118,38 @@
 
 .form__delete {
 	grid-column: span 2;
-	text-align: center;
+	justify-self: center;
+	margin-top: 1rem;
+	width: 20rem;
 }
 .form__button--extended-width {
-	margin-top: 0.6rem;
+	margin-top: 1rem;
 	width: 50%;
 }
 
+.lists-container {
+	grid-column: span 2;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	background-color: rgb(246, 246, 246);
+	/* height: 100vh; */
+}
 .list {
 	padding-left: 0;
+	margin-left: 3rem;
+	margin-right: 3rem;
 }
-
 .list__header {
 	text-align: center;
 }
 .list__item {
 	display: flex;
-	margin-left: 3rem;
+	margin: 0.4rem 4rem;
+	padding-left: 3rem;
+	background-color: var(--secondary);
 }
-
 .list__item-text {
-	min-width: 10em;
-	max-width: max-content;
+	max-width: 10em;
 	margin-right: 2em;
 	cursor: pointer;
 	user-select: none;
@@ -133,19 +160,28 @@
 	border-radius: 50%;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
-	background-color: white;
+	background-color: var(--secondary);
+	margin-left: auto;
+	margin-right: 1rem;
 }
 .list__item-delete:hover {
 	border-radius: 50%;
 	background-color: tomato;
 }
-.list__item--completed {
+.list__item--completed p {
 	text-decoration-line: line-through;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1050px) {
+	.checkbox {
+		right: 0;
+	}
 	.list {
-		margin-top: 2rem;
+		margin-top: 0rem;
 		grid-column: span 2;
+	}
+	.list__item {
+		margin: 0.4rem 0rem;
+		padding-left: 1rem;
 	}
 }

@@ -30,7 +30,13 @@
 				</h1>
 				<div class="form-container">
 					<form class="form__input">
-						<input class="form__input-field" id="form-input" type="text" />
+						<input
+							class="form__input-field"
+							id="form-input"
+							type="text"
+							autofocus
+							autocomplete="off"
+						/>
 						<button class="form__button" id="form-submit">
 							Add item
 						</button>
@@ -46,15 +52,16 @@
 					</form>
 				</div>
 			</header>
-			<ul class="list list__todo" id="todolist">
-				<h2 class="list__header">TO DO</h2>
-				<!-- list items rendered by JS -->
-			</ul>
-			<ul class="list list_completed" id="completedlist">
-				<h2 class="list__header">DONE</h2>
-				<!-- list items rendered by JS -->
-			</ul>
-		</div>
+			<section class="lists-container">
+				<ul class="list list__todo" id="todolist">
+					<h2 class="list__header">TO DO</h2>
+					<!-- list items rendered by JS -->
+				</ul>
+				<ul class="list list__completed" id="completedlist">
+					<h2 class="list__header">DONE</h2>
+					<!-- list items rendered by JS -->
+				</ul>
+			</section>
 		<script src="./index.js"></script>
 	</body>
 </html>

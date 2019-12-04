@@ -7,11 +7,25 @@ const clearListBtn = document.getElementById("clear-list-btn");
 const deleteItemBtn = document.getElementById("delete-item-btn");
 
 let items = [];
+let onions = false;
+
+// Adds opacity to checkbox box on top of the page upon scrolling past certain point
+window.addEventListener("scroll", () => {
+	const checkBox = document.querySelector(".checkbox");
+	if (window.pageYOffset > 20) {
+		checkBox.classList.add("checkbox--scrolled");
+	} else {
+		checkBox.classList.remove("checkbox--scrolled");
+	}
+});
 
 // Captures user input on input field and add value to userInput variable
 let userInput = "";
 inputField.addEventListener("keyup", e => {
 	userInput = e.target.value;
+	if (userInput.toLowerCase() === "onions") {
+		onions = true;
+	}
 });
 
 // Add the state of the "Save list" checkbox to localStorage and updates it with items list array
@@ -87,11 +101,14 @@ clearListBtn.addEventListener("click", e => {
 
 function addItemToList() {
 	items.push({
-		description: userInput,
+		description: onions
+			? "Onions have layers. Ogres have layers. Onions have layers. You get it? We both have layers"
+			: userInput,
 		completed: false,
 		id: items.length,
 		active: true
 	});
+	onions = false;
 }
 
 function clearUI() {
